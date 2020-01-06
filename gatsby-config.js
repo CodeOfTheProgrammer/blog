@@ -48,6 +48,14 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "codeoftheprogrammer.com",
+        protocol: "https",
+        hostname: "codeoftheprogrammer.com",
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
