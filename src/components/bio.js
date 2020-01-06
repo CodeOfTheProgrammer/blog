@@ -8,10 +8,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
-import { faInstagram, faLinkedin, faRedditSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { rhythm } from "../utils/typography"
+import SocialMedia from './socialMedia';
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -26,18 +24,12 @@ const Bio = () => {
       site {
         siteMetadata {
           author
-          social {
-            instagram,
-            linkedin,
-            reddit,
-            twitter
-          }
         }
       }
     }
-  `)
+  `);
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata;
   return (
     <div
       style={{
@@ -59,32 +51,12 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author}</strong> who lives and works in Annapolis, Maryland.
+        Written by <strong>{author}</strong>, who lives and works in Annapolis, Maryland.
         {` `}
-        <div>
-           <a className={'social-link'} href={`https://twitter.com/${social.twitter}`} target="_blank">
-             <FontAwesomeIcon icon={faTwitterSquare} />
-           </a>
-           {` `}
-           <a className={'social-link'} href={`https://reddit.com/u/${social.reddit}`} target="_blank">
-             <FontAwesomeIcon icon={faRedditSquare} />
-           </a>
-           {` `}
-           <a className={'social-link'} href={`https://instagram.com/${social.instagram}`} target="_blank">
-             <FontAwesomeIcon icon={faInstagram} />
-           </a>
-           {` `}
-           <a className={'social-link'} href={`https://www.linkedin.com/in/${social.linkedin}`} target="_blank">
-             <FontAwesomeIcon icon={faLinkedin} />
-           </a>
-           {` `}
-           <a className={'social-link'} href={`mailto:codeoftheprogrammer@gmail.com`} target="_blank">
-             <FontAwesomeIcon icon={faEnvelopeSquare} />
-           </a>
-        </div>
+        <SocialMedia />
       </p>
     </div>
   )
-}
+};
 
 export default Bio
