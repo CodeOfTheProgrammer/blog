@@ -49,11 +49,11 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.COTP_AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-east-1'
           SOURCE_DIR: 'public'
-#      - name: invalidate
-#        uses: chetan/invalidate-cloudfront-action@master
-#        env:
-#          DISTRIBUTION: ${{ secrets.COTP_AWS_CLOUDFRONT_DISTRIBUTION }}
-#          PATHS: '/*'
-#          AWS_REGION: 'us-east-1'
-#          AWS_ACCESS_KEY_ID: ${{ secrets.COTP_AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.COTP_AWS_SECRET_ACCESS_KEY }}
+      - name: invalidate
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.COTP_AWS_CLOUDFRONT_DISTRIBUTION }}
+          PATHS: '/*'
+          AWS_REGION: 'us-east-1'
+          AWS_ACCESS_KEY_ID: ${{ secrets.COTP_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.COTP_AWS_SECRET_ACCESS_KEY }}
