@@ -1,0 +1,59 @@
+name: Build and deploy
+on:
+  push:
+    branches:
+      - deploy
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+        with:
+          ref: deploy
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Build
+        run: |
+          npm ci
+          npx gatsby build
+        env:
+          CI: true
+      - name: Upload public
+        uses: actions/upload-artifact@v1
+        with:
+          name: public
+          path: public
+  deploy:
+    name: Deploy
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download public
+        uses: actions/download-artifact@v1
+        with:
+          name: public
+      - name: Deploy
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.COTP_AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.COTP_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.COTP_AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-1'
+          SOURCE_DIR: 'public'
+#      - name: invalidate
+#        uses: chetan/invalidate-cloudfront-action@master
+#        env:
+#          DISTRIBUTION: ${{ secrets.COTP_AWS_CLOUDFRONT_DISTRIBUTION }}
+#          PATHS: '/*'
+#          AWS_REGION: 'us-east-1'
+#          AWS_ACCESS_KEY_ID: ${{ secrets.COTP_AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.COTP_AWS_SECRET_ACCESS_KEY }}
