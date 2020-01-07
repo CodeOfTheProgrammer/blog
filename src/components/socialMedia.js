@@ -5,7 +5,7 @@
 import React from 'react';
 import {graphql, useStaticQuery} from "gatsby";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faInstagram, faLinkedin, faRedditSquare, faTwitterSquare} from "@fortawesome/free-brands-svg-icons";
+import {faInstagram, faLinkedin, faRedditSquare, faTwitterSquare, faGithubSquare} from "@fortawesome/free-brands-svg-icons";
 import {faEnvelopeSquare} from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
 
@@ -23,6 +23,7 @@ const SocialMedia = () => {
       site {
         siteMetadata {
           social {
+            github,
             instagram,
             linkedin,
             reddit,
@@ -39,6 +40,10 @@ const SocialMedia = () => {
         <SocialMediaLinks className={'SocialMedia'}>
             <a className={'social-link'} href={`https://twitter.com/${social.twitter}`} title="Twitter" rel="noopener noreferrer" target="_blank">
                 <FontAwesomeIcon icon={faTwitterSquare} />
+            </a>
+            {` `}
+            <a className={'social-link'} href={`https://github.com/${social.github}`} title="Github" rel="noopener noreferrer" target="_blank">
+                <FontAwesomeIcon icon={faGithubSquare} />
             </a>
             {` `}
             <a className={'social-link'} href={`https://reddit.com/u/${social.reddit}`} title="Reddit" rel="noopener noreferrer" target="_blank">

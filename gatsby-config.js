@@ -5,6 +5,7 @@ module.exports = {
     description: `Writing about work and life as an indie Software Developer.`,
     siteUrl: `https://codeoftheprogrammer.com/`,
     social: {
+      github: 'CodeOfTheProgrammer',
       instagram: `ericturner200`,
       linkedin: `eric-turner-080790196`,
       reddit: `CodeOfTheProgrammer`,
