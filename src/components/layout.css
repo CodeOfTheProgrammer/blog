@@ -1,8 +1,3 @@
 /*
  * Global styles.
  */
-
-/* Trying to prevent font-awesome icons from displaying huge before SocialMedia component's styles are loaded */
-.social-link {
-    font-size: 1.5rem;
-}
