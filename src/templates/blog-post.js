@@ -1,17 +1,28 @@
 import React from "react"
+import Disqus from "disqus-react";
 import { Link, graphql } from "gatsby"
-
+import styled from 'styled-components';
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
+const Hr = styled.hr`
+    margin-bottom: ${() => rhythm(1)};
+`;
+
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
-
+    const post = this.props.data.markdownRemark;
+    console.log(this.props);
+    const siteTitle = this.props.data.site.siteMetadata.title;
+    const { previous, next } = this.props.pageContext;
+    const disqusShortName = 'codeoftheprogrammer';
+    const disqusConfig = {
+        url: this.props.location.href,
+        identifier: post.id,
+        title: post.frontmatter.title,
+    };
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -39,13 +50,11 @@ class BlogPostTemplate extends React.Component {
             </p>
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
+          <Hr />
           <footer>
             <Bio />
+            <Hr />
+            <Disqus.DiscussionEmbed shortname={disqusShortName} config={disqusConfig}/>
           </footer>
         </article>
 
