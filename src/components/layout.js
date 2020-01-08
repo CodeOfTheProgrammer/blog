@@ -1,74 +1,49 @@
 import React from "react"
-import { Link } from "gatsby"
+import {Link} from "gatsby"
+import styled from 'styled-components';
 
 import "./layout.css";
-import { rhythm, scale } from "../utils/typography"
+import {rhythm, scale} from "../utils/typography"
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+const Title = styled.h1`
+    font-size: ${props => props.fontSize};
+    line-height: ${props => props.lineHeight};
+    margin-bottom: ${props => props.marginBottom};
+    margin-top: 0; 
+`;
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
+const TitleLink = styled(Link)`
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit;
+`;
+
+const Header = ({location, title}) => {
+    const rootPath = `${__PATH_PREFIX__}/`;
+    const factor = location.pathname === rootPath ? 1.5 : 0.5;
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}
-        </footer>
-      </div>
-    )
-  }
-}
+        <header>
+            <Title {...scale(factor)} marginBottom={rhythm(factor)}>
+                <TitleLink to={`/`}>{title}</TitleLink>
+            </Title>
+        </header>
+    );
+};
 
-export default Layout
+const Layout = styled(({location, title, className, children}) => {
+    return (
+        <div className={className}>
+            <Header location={location} title={title}/>
+            <main>{children}</main>
+            <footer>
+                © {new Date().getFullYear()} Code of the Programmer
+            </footer>
+        </div>
+    );
+})`
+    margin: ${() => `${rhythm(1.0)} ${rhythm(1.0)}`};
+    padding: ${() => `${rhythm(1.5)} ${rhythm(1.5)}`};
+    border-radius: ${() => rhythm(1.0)};
+`;
+
+export default Layout;

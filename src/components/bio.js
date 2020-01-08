@@ -8,10 +8,18 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import styled from 'styled-components';
 import { rhythm } from "../utils/typography"
 import SocialMedia from './socialMedia';
 
-const Bio = () => {
+const BioImage = styled(Image)`
+    margin-right: ${() => rhythm(1/2)};
+    margin-bottom: 0;
+    min-width: 50px;
+    border-radius: 100%;
+`;
+
+const Bio = styled(({className}) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -31,32 +39,26 @@ const Bio = () => {
 
   const { author } = data.site.siteMetadata;
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
-      <Image
+    <div className={className}>
+      <BioImage
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
       />
-      <p>
-        Written by <strong>{author}</strong>, who lives and works in Annapolis, Maryland.
-        {` `}
-        <SocialMedia />
-      </p>
+      <div className={'bio-content'}>
+          <p>
+            Written by <strong>{author}</strong>, who lives and works in Annapolis, Maryland.
+          </p>
+          <SocialMedia />
+      </div>
     </div>
   )
-};
+})`
+    display: flex;
+    margin-bottom: ${() => rhythm(1.0)};
+    .bio-content p {
+        margin-bottom: 0;
+    }
+`;
 
-export default Bio
+
+export default Bio;
