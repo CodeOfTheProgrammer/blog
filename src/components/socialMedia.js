@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {graphql, useStaticQuery} from "gatsby";
-import {FaTwitterSquare, FaGithubSquare, FaRedditSquare, FaInstagram, FaLinkedin, FaEnvelopeSquare} from 'react-icons/fa';
+import {FaComment, FaTwitterSquare, FaGithubSquare, FaRedditSquare, FaInstagram, FaLinkedin, FaEnvelopeSquare} from 'react-icons/fa';
 
 import styled from 'styled-components';
 
@@ -22,6 +22,7 @@ const SocialMedia = () => {
       site {
         siteMetadata {
           social {
+            disqus,
             github,
             instagram,
             linkedin,
@@ -41,6 +42,14 @@ const SocialMedia = () => {
                 <FaTwitterSquare />
             </a>
             {` `}
+            <a className={'social-link'} href={`mailto:codeoftheprogrammer@gmail.com`} title="Email" rel="noopener noreferrer" target="_blank">
+                <FaEnvelopeSquare />
+            </a>
+            {` `}
+            <a className={'social-link'} href={`https://disqus.com/by/${social.disqus}/`} title="Disqus" rel="noopener noreferrer" target="_blank">
+                <FaComment />
+            </a>
+            {` `}
             <a className={'social-link'} href={`https://github.com/${social.github}`} title="Github" rel="noopener noreferrer" target="_blank">
                 <FaGithubSquare />
             </a>
@@ -55,10 +64,6 @@ const SocialMedia = () => {
             {` `}
             <a className={'social-link'} href={`https://www.linkedin.com/in/${social.linkedin}`} title="LinkedIn" rel="noopener noreferrer" target="_blank">
                 <FaLinkedin />
-            </a>
-            {` `}
-            <a className={'social-link'} href={`mailto:codeoftheprogrammer@gmail.com`} title="Email" rel="noopener noreferrer" target="_blank">
-                <FaEnvelopeSquare />
             </a>
         </SocialMediaLinks>
     );
