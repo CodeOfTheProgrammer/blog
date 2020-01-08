@@ -18,17 +18,19 @@ const TitleLink = styled(Link)`
     color: inherit;
 `;
 
-const Header = ({location, title}) => {
+const Header = styled(({location, title, className}) => {
     const rootPath = `${__PATH_PREFIX__}/`;
     const factor = location.pathname === rootPath ? 1.5 : 0.5;
     return (
-        <header>
+        <header className={className}>
             <Title {...scale(factor)} marginBottom={rhythm(factor)}>
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
         </header>
     );
-};
+})`
+    // TODO: Style the header
+`;
 
 const Layout = styled(({location, title, className, children}) => {
     return (
