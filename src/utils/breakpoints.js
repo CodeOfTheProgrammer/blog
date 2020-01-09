@@ -4,12 +4,12 @@
  * import {breakpointUp} from './breakpoints';
  *
  * @media ${breakpointUp.lg} {
- *   font-size: 1.5rem;
+ *   ...
  * }
  *
  */
 
-const minWidth = {
+export const minWidth = {
     xs: '0px',
     sm: '576px',
     md: '768px',
@@ -17,7 +17,7 @@ const minWidth = {
     xl: '1200px',
 };
 
-const maxWidth = {
+export const maxWidth = {
     xs: '575.98px',
     sm: '767.98px',
     md: '991.98px',

@@ -14,6 +14,8 @@ const Divider = styled.hr`
 const PostTitle = styled.h1`
     margin-top: ${() => rhythm(1)};
     margin-bottom: 0;
+    font-size: ${() => scale(0.8).fontSize};
+    line-height: ${() => scale(0.8).lineHeight};
 `;
 
 const PostDate = styled.p`

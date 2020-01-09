@@ -5,11 +5,12 @@
 import React from 'react';
 import {graphql, useStaticQuery} from "gatsby";
 import {FaComment, FaTwitterSquare, FaGithubSquare, FaRedditSquare, FaInstagram, FaLinkedin, FaEnvelopeSquare} from 'react-icons/fa';
+import {scale} from '../utils/typography';
 
 import styled from 'styled-components';
 
 const SocialMediaLinks = styled.div`
-  font-size: 1.5rem;
+  font-size: ${() => scale(0.6).fontSize};
   .social-link {
     color: #007acc;
     box-shadow: none;
