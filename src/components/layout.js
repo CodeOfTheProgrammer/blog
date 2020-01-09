@@ -4,12 +4,33 @@ import styled from 'styled-components';
 
 import "./layout.css";
 import {rhythm, scale} from "../utils/typography"
+import {breakpointUp} from "../utils/breakpoints";
 
 const Title = styled.h1`
-    font-size: ${props => props.fontSize};
-    line-height: ${props => props.lineHeight};
-    margin-bottom: ${props => props.marginBottom};
+    font-size: ${() => scale(0.25).fontSize};
+    line-height: ${() => scale(0.25).lineHeight};
+    margin-bottom: ${() => rhythm(1.5)};
     margin-top: 0; 
+
+    @media ${breakpointUp.sm} {
+        font-size: ${() => scale(0.5).fontSize};
+        line-height: ${() => scale(0.5).lineHeight};
+    }
+        
+    @media ${breakpointUp.md} {
+        font-size: ${() => scale(1).fontSize};
+        line-height: ${() => scale(1).lineHeight};
+    }
+    
+    @media ${breakpointUp.lg} {
+        font-size: ${() => scale(1.5).fontSize};
+        line-height: ${() => scale(1.5).lineHeight};
+    }
+    
+     @media ${breakpointUp.xl} {
+        font-size: ${() => scale(2).fontSize};
+        line-height: ${() => scale(2).lineHeight};
+    }
 `;
 
 const TitleLink = styled(Link)`
@@ -19,11 +40,9 @@ const TitleLink = styled(Link)`
 `;
 
 const Header = styled(({location, title, className}) => {
-    const rootPath = `${__PATH_PREFIX__}/`;
-    const factor = location.pathname === rootPath ? 1.5 : 0.5;
     return (
         <header className={className}>
-            <Title {...scale(factor)} marginBottom={rhythm(factor)}>
+            <Title>
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
         </header>
