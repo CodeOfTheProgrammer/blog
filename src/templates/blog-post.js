@@ -56,7 +56,7 @@ const PostNav = styled(({previous, next, className}) => {
     }
 `;
 
-const BlogPostTemplate = ({data, pageContext, location, className}) => {
+const BlogPostTemplate = styled(({data, pageContext, location, className}) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata.title;
     const {previous, next} = pageContext;
@@ -90,7 +90,18 @@ const BlogPostTemplate = ({data, pageContext, location, className}) => {
             <PostNav previous={previous} next={next} />
         </Layout>
     )
-};
+})`
+    blockquote p {
+        font-style: italic;
+        quotes: "“" "”" "‘" "’";
+    }
+    blockquote p:before {
+        content: open-quote;
+    }
+    blockquote p:after {
+        content: close-quote;
+    }
+`;
 
 export default BlogPostTemplate
 
