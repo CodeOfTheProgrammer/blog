@@ -42,7 +42,6 @@ const BlogPostSummary = styled(
 `;
 
 const BlogIndex = ({ location, data, className }) => {
-    console.log(data);
     const siteTitle = data.site.siteMetadata.title;
     const siteDescription = data.site.siteMetadata.description;
     const posts = data.allMarkdownRemark.edges;
