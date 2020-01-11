@@ -9,25 +9,58 @@ import { breakpointUp, maxWidth } from '../utils/breakpoints';
 import Divider from './divider';
 import AuthorInfo from './authorInfo';
 
-const Logo = styled(({src, to, className}) => (
+const Logo = styled(({ src, to, className }) => (
     <Link className={className} to={to}>
         <img src={src} />
     </Link>
 ))`
     line-height: 0;
     img {
-        height: ${() => scale(2.8).fontSize};
+        height: 32px;
         transform: rotate(-45deg);
         margin: 0;
-        padding: ${() => rhythm(3/5)};
+        padding: 0;
         opacity: 0.5;
+
+        @media ${breakpointUp.sm} {
+            height: 48px;
+        }
+
+        @media ${breakpointUp.md} {
+            height: 64px;
+        }
+
+        @media ${breakpointUp.lg} {
+            height: 80px;
+        }
+
+        @media ${breakpointUp.xl} {
+            height: 96px;
+        }
     }
 `;
 
 const TitleLink = styled(Link)`
+    padding-left: ${() => rhythm(1 / 4)};
     box-shadow: none;
     text-decoration: none;
     color: inherit;
+
+    @media ${breakpointUp.sm} {
+        padding-left: ${() => rhythm(1 / 3)};
+    }
+
+    @media ${breakpointUp.md} {
+        padding-left: ${() => rhythm(1 / 2)};
+    }
+
+    @media ${breakpointUp.lg} {
+        padding-left: ${() => rhythm(2 / 3)};
+    }
+
+    @media ${breakpointUp.xl} {
+        padding-left: ${() => rhythm(3 / 4)};
+    }
 `;
 
 const Title = styled.h1`
@@ -35,39 +68,48 @@ const Title = styled.h1`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: rgba(0, 0, 0, 0.5);
-    :hover {
-        color: #007acc;
-    }
-    font-size: ${() => scale(0.5).fontSize};
+    margin-top: 0;
+    margin-bottom: ${() => rhythm(1 / 4)};
+    font-size: ${() => scale(0.2).fontSize};
+    line-height: ${() => scale(0.2).lineHeight};
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    line-height: ${() => scale(0.5).lineHeight};
-    margin-bottom: ${() => rhythm(1 / 4)};
-    margin-top: 0;
+    color: rgba(0, 0, 0, 0.5);
+
+    :hover {
+        color: #007acc;
+    }
 
     @media ${breakpointUp.sm} {
-        font-size: ${() => scale(1).fontSize};
-        line-height: ${() => scale(1).lineHeight};
+        font-size: ${() => scale(0.9).fontSize};
+        line-height: ${() => scale(0.9).lineHeight};
     }
 
     @media ${breakpointUp.md} {
-        font-size: ${() => scale(1.5).fontSize};
-        line-height: ${() => scale(1.5).lineHeight};
+        font-size: ${() => scale(1.3).fontSize};
+        line-height: ${() => scale(1.3).lineHeight};
     }
 `;
 
 const Description = styled.p`
     color: rgba(0, 0, 0, 0.5);
+    font-size: 0.8rem;
+    line-height: 0.8rem;
     text-align: center;
+    margin-top: ${() => rhythm(3 / 4)};
+
+    @media ${breakpointUp.sm} {
+        font-size: ${() => scale(0.1).fontSize};
+        line-height: ${() => scale(0.1).lineHeight};
+    }
 `;
 
 const Header = styled(({ title, description, className }) => {
     return (
         <header className={classnames('header', className)}>
             <Title>
-                <Logo src='/qrcode.svg' to={`/`} />
+                <Logo src="/qrcode.svg" to={`/`} />
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
             <Description>{description}</Description>
