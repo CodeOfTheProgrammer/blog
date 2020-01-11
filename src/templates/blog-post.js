@@ -10,8 +10,9 @@ import {rhythm, scale} from "../utils/typography"
 
 const PostTitle = styled.h1`
     margin-top: ${() => rhythm(1)};
-    margin-bottom: 0;
+    margin-bottom: ${() => rhythm(1/4)};
     font-size: ${() => scale(0.8).fontSize};
+    color: #007acc;
     line-height: ${() => scale(0.8).lineHeight};
 `;
 
@@ -19,7 +20,6 @@ const PostDate = styled.p`
     font-size: ${() => scale(-1 / 5).fontSize};
     line-height: ${() => scale(-1 / 5).lineHeight};
     display: block;
-    margin-bottom: ${() => rhythm(1)};
 `;
 
 const PostNav = styled(({previous, next, className}) => {
@@ -56,6 +56,7 @@ const PostNav = styled(({previous, next, className}) => {
 const BlogPostTemplate = styled(({data, pageContext, location, className}) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata.title;
+    const siteDescription = data.site.siteMetadata.description;
     const {previous, next} = pageContext;
     const disqusShortName = 'codeoftheprogrammer';
     const disqusConfig = {
@@ -65,7 +66,7 @@ const BlogPostTemplate = styled(({data, pageContext, location, className}) => {
     };
 
     return (
-        <Layout location={location} title={siteTitle} className={className}>
+        <Layout title={siteTitle} description={siteDescription} className={className}>
             <SEO
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
@@ -73,13 +74,11 @@ const BlogPostTemplate = styled(({data, pageContext, location, className}) => {
             <article>
                 <header>
                     <PostTitle>{post.frontmatter.title}</PostTitle>
-                    <PostDate>{post.frontmatter.date}</PostDate>
+                    <PostDate>Published on {post.frontmatter.date}</PostDate>
                 </header>
                 <section dangerouslySetInnerHTML={{__html: post.html}}/>
                 <Divider/>
                 <footer>
-                    <Bio/>
-                    <Divider/>
                     <Disqus.DiscussionEmbed shortname={disqusShortName} config={disqusConfig}/>
                 </footer>
             </article>
@@ -107,6 +106,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

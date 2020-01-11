@@ -63,10 +63,8 @@ const Bio = styled(({className}) => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: ${() => rhythm(1)};
     min-width: 320px;
     .bio {
-        margin-bottom: ${() => rhythm(1/4)};
         display: flex;
         flex-direction: row;
         .bio-content p {

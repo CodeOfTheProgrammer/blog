@@ -5,31 +5,23 @@ import styled from 'styled-components';
 import "./layout.css";
 import {rhythm, scale} from "../utils/typography"
 import {breakpointUp, maxWidth} from "../utils/breakpoints";
+import Divider from "./divider";
+import Bio from "./bio";
 
 const Title = styled.h1`
     font-size: ${() => scale(0.8).fontSize};
     line-height: ${() => scale(0.8).lineHeight};
-    margin-bottom: ${() => rhythm(1.0)};
+    margin-bottom: ${() => rhythm(1/4)};
     margin-top: 0; 
 
     @media ${breakpointUp.sm} {
         font-size: ${() => scale(1.1).fontSize};
         line-height: ${() => scale(1.1).lineHeight};
     }
-        
+
     @media ${breakpointUp.md} {
         font-size: ${() => scale(1.4).fontSize};
         line-height: ${() => scale(1.4).lineHeight};
-    }
-    
-    @media ${breakpointUp.lg} {
-        font-size: ${() => scale(1.7).fontSize};
-        line-height: ${() => scale(1.7).lineHeight};
-    }
-    
-     @media ${breakpointUp.xl} {
-        font-size: ${() => scale(2).fontSize};
-        line-height: ${() => scale(2).lineHeight};
     }
 `;
 
@@ -39,25 +31,29 @@ const TitleLink = styled(Link)`
     color: inherit;
 `;
 
-const Header = styled(({location, title, className}) => {
+const Header = styled(({title, description, className}) => {
     return (
         <header className={className}>
             <Title>
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
+            <p>{description}</p>
+            <Divider/>
+            <Bio />
+            <Divider/>
         </header>
     );
 })`
-    // TODO: Style the header
+    margin-bottom: ${() => rhythm(1)};
 `;
 
-const Layout = styled(({location, title, className, children}) => {
+const Layout = styled(({title, description, className, children}) => {
     return (
         <div className={className}>
-            <Header location={location} title={title}/>
+            <Header title={title} description={description} />
             <main>{children}</main>
             <footer>
-                © {new Date().getFullYear()} Code of the Programmer
+                © {new Date().getFullYear()}, Eric Turner
             </footer>
         </div>
     );

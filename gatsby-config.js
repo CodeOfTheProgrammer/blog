@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Code of the Programmer`,
     author: `Eric Turner`,
-    description: `Writing about work and life as an indie Software Developer.`,
+    description: `Writing about work and life as an indie Software Developer`,
     siteUrl: `https://codeoftheprogrammer.com/`,
     social: {
       disqus: 'CodeOfTheProgrammer',
