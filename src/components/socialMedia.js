@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {graphql, useStaticQuery} from "gatsby";
+import classnames from 'classnames';
 import {FaComment, FaTwitterSquare, FaGithubSquare, FaRedditSquare, FaInstagram, FaLinkedin, FaEnvelopeSquare} from 'react-icons/fa';
 import {scale} from '../utils/typography';
 
@@ -17,7 +18,7 @@ const SocialMediaLinks = styled.div`
   }
 `;
 
-const SocialMedia = () => {
+const SocialMedia = ({className}) => {
   const data = useStaticQuery(graphql`
     query SocialMediaQuery {
       site {
@@ -38,7 +39,7 @@ const SocialMedia = () => {
     const { social } = data.site.siteMetadata;
 
     return (
-        <SocialMediaLinks className={'SocialMedia'}>
+        <SocialMediaLinks className={classnames('social-media', className)}>
             <a className={'social-link'} href={`https://twitter.com/${social.twitter}`} title="Twitter" rel="noopener noreferrer" target="_blank">
                 <FaTwitterSquare />
             </a>

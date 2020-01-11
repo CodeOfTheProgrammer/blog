@@ -1,13 +1,14 @@
 /**
- * Bio component that queries for data
+ * AuthorInfo component that queries for data
  * with Gatsby's useStaticQuery component
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import {useStaticQuery, graphql} from "gatsby"
-import Image from "gatsby-image"
+import React from "react";
+import {useStaticQuery, graphql} from "gatsby";
+import classnames from 'classnames';
+import Image from "gatsby-image";
 import styled from 'styled-components';
 import {rhythm} from "../utils/typography"
 import SocialMedia from './socialMedia';
@@ -19,7 +20,7 @@ const BioImage = styled(Image)`
     border-radius: 10%;
 `;
 
-const Bio = styled(({className}) => {
+const AuthorInfo = styled(({className}) => {
     const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -39,7 +40,7 @@ const Bio = styled(({className}) => {
 
     const {author} = data.site.siteMetadata;
     return (
-        <div className={className}>
+        <div className={classnames('author-info', className)}>
             <div className="bio">
                 <BioImage
                     fixed={data.avatar.childImageSharp.fixed}
@@ -74,4 +75,4 @@ const Bio = styled(({className}) => {
 `;
 
 
-export default Bio;
+export default AuthorInfo;

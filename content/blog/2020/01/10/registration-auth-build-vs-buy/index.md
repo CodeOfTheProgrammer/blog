@@ -1,7 +1,7 @@
 ---
 title: "Registration and Authentication: Making a Build vs. Buy Decision"
 date: "2020-01-10T00:00:00.000Z"
-description: "Weighing the pros and cons of building your own registration and authentication system, or using a third-party service."
+description: "Weighing the pros and cons of building my own registration and authentication system, or using a third-party service."
 ---
 
 Today I'm starting to work on the first of the registration and login user stories for an application that I'm developing:

@@ -1,12 +1,13 @@
-import React from "react"
-import {Link} from "gatsby"
+import React from 'react';
+import {Link} from 'gatsby';
+import classnames from 'classnames';
 import styled from 'styled-components';
 
 import "./layout.css";
 import {rhythm, scale} from "../utils/typography"
 import {breakpointUp, maxWidth} from "../utils/breakpoints";
 import Divider from "./divider";
-import Bio from "./bio";
+import AuthorInfo from "./authorInfo";
 
 const Title = styled.h1`
     font-size: ${() => scale(0.8).fontSize};
@@ -33,13 +34,13 @@ const TitleLink = styled(Link)`
 
 const Header = styled(({title, description, className}) => {
     return (
-        <header className={className}>
+        <header className={classnames('header', className)}>
             <Title>
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
             <p>{description}</p>
             <Divider/>
-            <Bio />
+            <AuthorInfo />
             <Divider/>
         </header>
     );
@@ -49,7 +50,7 @@ const Header = styled(({title, description, className}) => {
 
 const Layout = styled(({title, description, className, children}) => {
     return (
-        <div className={className}>
+        <div className={classnames('layout', className)}>
             <Header title={title} description={description} />
             <main>{children}</main>
             <footer>

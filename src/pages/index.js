@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import classnames from 'classnames';
 import styled from 'styled-components';
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -10,10 +11,10 @@ const BlogLink = styled(Link)`
     text-decoration: none;
 `;
 
-const BlogPost = styled(({frontmatter, fields, excerpt, className}) => {
+const BlogPostSummary = styled(({frontmatter, fields, excerpt, className}) => {
     const title = frontmatter.title || fields.slug;
     return (
-        <article className={className}>
+        <article className={classnames('blog-post-summary', className)}>
             <header>
                 <h3>
                     <BlogLink to={fields.slug}>{title}</BlogLink>
@@ -38,18 +39,21 @@ const BlogPost = styled(({frontmatter, fields, excerpt, className}) => {
     }
 `;
 
-const BlogIndex = ({location, data}) => {
+const BlogIndex = ({location, data, className}) => {
     console.log(data);
     const siteTitle = data.site.siteMetadata.title;
     const siteDescription = data.site.siteMetadata.description;
     const posts = data.allMarkdownRemark.edges;
 
     return (
-      <Layout location={location} description={siteDescription} title={siteTitle}>
+      <Layout className={classnames('blog-index', className)}
+              location={location}
+              description={siteDescription}
+              title={siteTitle}>
         <SEO title="All posts" />
         {posts.map(({ node }) => {
           return (
-              <BlogPost key={node.fields.slug} {...node} />
+              <BlogPostSummary key={node.fields.slug} {...node} />
           )
         })}
       </Layout>

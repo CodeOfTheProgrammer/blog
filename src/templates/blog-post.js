@@ -1,12 +1,13 @@
 import React from "react"
 import Disqus from "disqus-react";
 import {Link, graphql} from "gatsby"
+import classnames from 'classnames';
 import styled from 'styled-components';
-import Bio from "../components/bio"
 import Divider from "../components/divider";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {rhythm, scale} from "../utils/typography"
+import AuthorInfo from "../components/authorInfo";
 
 const PostTitle = styled.h1`
     margin-top: ${() => rhythm(1)};
@@ -24,7 +25,7 @@ const PostDate = styled.p`
 
 const PostNav = styled(({previous, next, className}) => {
     return (
-        <nav className={className}>
+        <nav className={classnames('post-nav', className)}>
             <ul>
                 <li>
                     {previous && (
@@ -66,7 +67,9 @@ const BlogPostTemplate = styled(({data, pageContext, location, className}) => {
     };
 
     return (
-        <Layout title={siteTitle} description={siteDescription} className={className}>
+        <Layout className={classnames('blog-post-template', className)}
+                title={siteTitle}
+                description={siteDescription}>
             <SEO
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
