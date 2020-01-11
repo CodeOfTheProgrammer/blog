@@ -9,6 +9,21 @@ import { breakpointUp, maxWidth } from '../utils/breakpoints';
 import Divider from './divider';
 import AuthorInfo from './authorInfo';
 
+const Logo = styled(({src, to, className}) => (
+    <Link className={className} to={to}>
+        <img src={src} />
+    </Link>
+))`
+    line-height: 0;
+    img {
+        height: ${() => scale(2.8).fontSize};
+        transform: rotate(-45deg);
+        margin: 0;
+        padding: ${() => rhythm(3/5)};
+        opacity: 0.5;
+    }
+`;
+
 const TitleLink = styled(Link)`
     box-shadow: none;
     text-decoration: none;
@@ -16,6 +31,10 @@ const TitleLink = styled(Link)`
 `;
 
 const Title = styled.h1`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     color: rgba(0, 0, 0, 0.5);
     :hover {
         color: #007acc;
@@ -48,6 +67,7 @@ const Header = styled(({ title, description, className }) => {
     return (
         <header className={classnames('header', className)}>
             <Title>
+                <Logo src='/qrcode.svg' to={`/`} />
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
             <Description>{description}</Description>
