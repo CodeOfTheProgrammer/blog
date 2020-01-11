@@ -63,6 +63,7 @@ const AuthorInfo = styled(({ className }) => {
     justify-content: space-between;
     align-items: center;
     min-width: 320px;
+    color: rgba(0, 0, 0, 0.5);
     .bio {
         display: flex;
         flex-direction: row;

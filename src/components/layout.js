@@ -9,27 +9,39 @@ import { breakpointUp, maxWidth } from '../utils/breakpoints';
 import Divider from './divider';
 import AuthorInfo from './authorInfo';
 
-const Title = styled.h1`
-    font-size: ${() => scale(0.8).fontSize};
-    line-height: ${() => scale(0.8).lineHeight};
-    margin-bottom: ${() => rhythm(1 / 4)};
-    margin-top: 0;
-
-    @media ${breakpointUp.sm} {
-        font-size: ${() => scale(1.1).fontSize};
-        line-height: ${() => scale(1.1).lineHeight};
-    }
-
-    @media ${breakpointUp.md} {
-        font-size: ${() => scale(1.4).fontSize};
-        line-height: ${() => scale(1.4).lineHeight};
-    }
-`;
-
 const TitleLink = styled(Link)`
     box-shadow: none;
     text-decoration: none;
     color: inherit;
+`;
+
+const Title = styled.h1`
+    color: rgba(0, 0, 0, 0.5);
+    :hover {
+        color: #007acc;
+    }
+    font-size: ${() => scale(0.5).fontSize};
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: ${() => scale(0.5).lineHeight};
+    margin-bottom: ${() => rhythm(1 / 4)};
+    margin-top: 0;
+
+    @media ${breakpointUp.sm} {
+        font-size: ${() => scale(1).fontSize};
+        line-height: ${() => scale(1).lineHeight};
+    }
+
+    @media ${breakpointUp.md} {
+        font-size: ${() => scale(1.5).fontSize};
+        line-height: ${() => scale(1.5).lineHeight};
+    }
+`;
+
+const Description = styled.p`
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
 `;
 
 const Header = styled(({ title, description, className }) => {
@@ -38,7 +50,7 @@ const Header = styled(({ title, description, className }) => {
             <Title>
                 <TitleLink to={`/`}>{title}</TitleLink>
             </Title>
-            <p>{description}</p>
+            <Description>{description}</Description>
             <Divider />
             <AuthorInfo />
             <Divider />
@@ -55,6 +67,7 @@ const Footer = styled(({ className }) => {
         </footer>
     );
 })`
+    color: rgba(0, 0, 0, 0.5);
     padding: ${() => rhythm(2)};
     text-align: center;
 `;

@@ -21,8 +21,11 @@ import styled from 'styled-components';
 const SocialMediaLinks = styled.div`
     font-size: ${() => scale(0.6).fontSize};
     .social-link {
-        color: #007acc;
+        color: rgba(0, 0, 0, 0.5);
         box-shadow: none;
+    }
+    .social-link:hover {
+        color: #007acc;
     }
 `;
 
