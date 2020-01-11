@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
-import {useStaticQuery, graphql} from "gatsby";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import classnames from 'classnames';
-import Image from "gatsby-image";
+import Image from 'gatsby-image';
 import styled from 'styled-components';
-import {rhythm} from "../utils/typography"
+import { rhythm } from '../utils/typography';
 import SocialMedia from './socialMedia';
 
 const BioImage = styled(Image)`
@@ -20,25 +20,25 @@ const BioImage = styled(Image)`
     border-radius: 10%;
 `;
 
-const AuthorInfo = styled(({className}) => {
+const AuthorInfo = styled(({ className }) => {
     const data = useStaticQuery(graphql`
-    query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
+        query BioQuery {
+            avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+                childImageSharp {
+                    fixed(width: 50, height: 50) {
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            site {
+                siteMetadata {
+                    author
+                }
+            }
         }
-      }
-      site {
-        siteMetadata {
-          author
-        }
-      }
-    }
-  `);
+    `);
 
-    const {author} = data.site.siteMetadata;
+    const { author } = data.site.siteMetadata;
     return (
         <div className={classnames('author-info', className)}>
             <div className="bio">
@@ -51,14 +51,12 @@ const AuthorInfo = styled(({className}) => {
                     <p>
                         <strong>{author}</strong>
                     </p>
-                    <p>
-                        Annapolis, Maryland, USA
-                    </p>
+                    <p>Annapolis, Maryland, USA</p>
                 </div>
             </div>
-            <SocialMedia/>
+            <SocialMedia />
         </div>
-    )
+    );
 })`
     display: flex;
     flex-direction: row;
@@ -73,6 +71,5 @@ const AuthorInfo = styled(({className}) => {
         }
     }
 `;
-
 
 export default AuthorInfo;

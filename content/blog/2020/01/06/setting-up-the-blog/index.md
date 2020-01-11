@@ -1,7 +1,7 @@
 ---
 title: The Blog is Up
-date: "2020-01-06T00:00:00.000Z"
-description: "How I set up my blog."
+date: '2020-01-06T00:00:00.000Z'
+description: 'How I set up my blog.'
 ---
 
 Today I'm working on setting up my blog (deployment, hosting, etc) and thought you might like to see my approach at a high level. My approach isn't the easiest from a technical perspective, but it gives me the flexibility I want, and hosting costs should be quite low.

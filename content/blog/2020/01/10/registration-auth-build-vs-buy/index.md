@@ -1,7 +1,7 @@
 ---
-title: "Registration and Authentication: Making a Build vs. Buy Decision"
-date: "2020-01-10T00:00:00.000Z"
-description: "Weighing the pros and cons of building my own registration and authentication system, or using a third-party service."
+title: 'Registration and Authentication: Making a Build vs. Buy Decision'
+date: '2020-01-10T00:00:00.000Z'
+description: 'Weighing the pros and cons of building my own registration and authentication system, or using a third-party service.'
 ---
 
 Today I'm starting to work on the first of the registration and login user stories for an application that I'm developing:
@@ -20,21 +20,21 @@ Unless you already have experience implementing and supporting registration and 
 
 Typical features needed for email/password registration and authentication are:
 
-* Email verification
-* Login form handling
-* Two-factor authentication (2FA)
-* Rate limiting login attempts
-* Lock out after too many failed login attempts
-* Changing email
-* Changing password
-* Password recovery
-* CAPTCHA
-* Account removal
+-   Email verification
+-   Login form handling
+-   Two-factor authentication (2FA)
+-   Rate limiting login attempts
+-   Lock out after too many failed login attempts
+-   Changing email
+-   Changing password
+-   Password recovery
+-   CAPTCHA
+-   Account removal
 
 Some obvious features that you'll likely need beyond email/password registration and authentication are:
 
-* Login with social media accounts (e.g. Twitter, Facebook)
-* Support for mobile
+-   Login with social media accounts (e.g. Twitter, Facebook)
+-   Support for mobile
 
 Without researching it, I assume the popular third-party services offer all of these features. If you build your own then you will have to implement the features you need.
 

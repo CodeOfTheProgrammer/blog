@@ -22,9 +22,8 @@ export const maxWidth = {
     sm: '767.98px',
     md: '991.98px',
     lg: '1199.98px',
-    xl: '99999.98px'
+    xl: '99999.98px',
 };
-
 
 export const breakpointUp = {
     xs: `(min-width: ${minWidth.xs})`,
