@@ -4,10 +4,9 @@ import {Link, graphql} from "gatsby"
 import classnames from 'classnames';
 import styled from 'styled-components';
 import Divider from "../components/divider";
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import {rhythm, scale} from "../utils/typography"
-import AuthorInfo from "../components/authorInfo";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import {rhythm, scale} from "../utils/typography";
 
 const PostTitle = styled.h1`
     margin-top: ${() => rhythm(1)};

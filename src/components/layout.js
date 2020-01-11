@@ -48,14 +48,23 @@ const Header = styled(({title, description, className}) => {
     margin-bottom: ${() => rhythm(1)};
 `;
 
+const Footer = styled(({className}) => {
+    return (
+        <footer className={classnames('footer', className)}>
+            © {new Date().getFullYear()}, Eric Turner
+        </footer>
+    );
+})`
+    padding: ${() => rhythm(2)};
+    text-align: center;
+`;
+
 const Layout = styled(({title, description, className, children}) => {
     return (
         <div className={classnames('layout', className)}>
             <Header title={title} description={description} />
             <main>{children}</main>
-            <footer>
-                © {new Date().getFullYear()}, Eric Turner
-            </footer>
+            <Footer />
         </div>
     );
 })`
