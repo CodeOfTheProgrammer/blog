@@ -9,7 +9,7 @@ import {breakpointUp, maxWidth} from "../utils/breakpoints";
 const Title = styled.h1`
     font-size: ${() => scale(0.8).fontSize};
     line-height: ${() => scale(0.8).lineHeight};
-    margin-bottom: ${() => rhythm(1.5)};
+    margin-bottom: ${() => rhythm(1.0)};
     margin-top: 0; 
 
     @media ${breakpointUp.sm} {

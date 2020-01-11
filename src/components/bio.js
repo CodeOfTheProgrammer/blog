@@ -6,21 +6,21 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import {useStaticQuery, graphql} from "gatsby"
 import Image from "gatsby-image"
 import styled from 'styled-components';
-import { rhythm } from "../utils/typography"
+import {rhythm} from "../utils/typography"
 import SocialMedia from './socialMedia';
 
 const BioImage = styled(Image)`
-    margin-right: ${() => rhythm(1/2)};
+    margin-right: ${() => rhythm(1 / 2)};
     margin-bottom: 0;
     min-width: 50px;
-    border-radius: 100%;
+    border-radius: 10%;
 `;
 
 const Bio = styled(({className}) => {
-  const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
@@ -37,26 +37,41 @@ const Bio = styled(({className}) => {
     }
   `);
 
-  const { author } = data.site.siteMetadata;
-  return (
-    <div className={className}>
-      <BioImage
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author}
-      />
-      <div className={'bio-content'}>
-          <p>
-            Written by <strong>{author}</strong>, who lives and works in Annapolis, Maryland.
-          </p>
-          <SocialMedia />
-      </div>
-    </div>
-  )
+    const {author} = data.site.siteMetadata;
+    return (
+        <div className={className}>
+            <div className="bio">
+                <BioImage
+                    fixed={data.avatar.childImageSharp.fixed}
+                    alt={author}
+                    className="bio-image"
+                />
+                <div className="bio-content">
+                    <p>
+                        <strong>{author}</strong>
+                    </p>
+                    <p>
+                        Annapolis, Maryland, USA
+                    </p>
+                </div>
+            </div>
+            <SocialMedia/>
+        </div>
+    )
 })`
     display: flex;
-    margin-bottom: ${() => rhythm(1.0)};
-    .bio-content p {
-        margin-bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: ${() => rhythm(1)};
+    min-width: 320px;
+    .bio {
+        margin-bottom: ${() => rhythm(1/4)};
+        display: flex;
+        flex-direction: row;
+        .bio-content p {
+            margin-bottom: 0;
+        }
     }
 `;
 

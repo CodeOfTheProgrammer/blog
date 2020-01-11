@@ -3,13 +3,10 @@ import Disqus from "disqus-react";
 import {Link, graphql} from "gatsby"
 import styled from 'styled-components';
 import Bio from "../components/bio"
+import Divider from "../components/divider";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {rhythm, scale} from "../utils/typography"
-
-const Divider = styled.hr`
-    margin-bottom: ${() => rhythm(1)};
-`;
 
 const PostTitle = styled.h1`
     margin-top: ${() => rhythm(1)};

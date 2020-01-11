@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from 'styled-components';
 import Bio from "../components/bio"
+import Divider from "../components/divider";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -43,7 +44,9 @@ const BlogIndex = ({location, data}) => {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
+        <Divider/>
         <Bio />
+        <Divider/>
         {posts.map(({ node }) => {
           return (
               <BlogPost key={node.fields.slug} {...node} />
