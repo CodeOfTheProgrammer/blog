@@ -70,8 +70,8 @@ const Title = styled.h1`
     align-items: center;
     margin-top: 0;
     margin-bottom: ${() => rhythm(1 / 4)};
-    font-size: ${() => scale(0.2).fontSize};
-    line-height: ${() => scale(0.2).lineHeight};
+    font-size: ${() => scale(1 / 5).fontSize};
+    line-height: ${() => scale(1 / 5).lineHeight};
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -82,8 +82,8 @@ const Title = styled.h1`
     }
 
     @media ${breakpointUp.sm} {
-        font-size: ${() => scale(0.9).fontSize};
-        line-height: ${() => scale(0.9).lineHeight};
+        font-size: ${() => scale(4 / 5).fontSize};
+        line-height: ${() => scale(4/ 5).lineHeight};
     }
 
     @media ${breakpointUp.md} {
@@ -100,8 +100,8 @@ const Description = styled.p`
     margin-top: ${() => rhythm(3 / 4)};
 
     @media ${breakpointUp.sm} {
-        font-size: ${() => scale(0.1).fontSize};
-        line-height: ${() => scale(0.1).lineHeight};
+        font-size: ${() => scale(1 / 10).fontSize};
+        line-height: ${() => scale(1 / 10).lineHeight};
     }
 `;
 
@@ -157,7 +157,7 @@ const Layout = styled(({ title, description, copyrightRange, className, children
     margin-left: auto;
     margin-right: auto;
     padding: ${() => `${rhythm(1.5)} ${rhythm(1.5)}`};
-    border-radius: ${() => rhythm(1.0)};
+    border-radius: ${() => rhythm(1)};
     max-width: ${() => maxWidth.lg};
 
     @media ${breakpointUp.sm} {
