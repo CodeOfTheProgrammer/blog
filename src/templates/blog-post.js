@@ -67,10 +67,13 @@ const BlogPostTemplate = styled(
         };
 
         return (
+            // Show the year of the post as the copyright date range in the footer of the layout
+            // since that is when the post was published and copyrighted.
             <Layout
                 className={classnames('blog-post-template', className)}
                 title={siteTitle}
                 description={siteDescription}
+                copyrightRange={`${new Date(post.frontmatter.date).getFullYear()}`}
             >
                 <SEO
                     title={post.frontmatter.title}

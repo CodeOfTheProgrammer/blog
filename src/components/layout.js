@@ -10,8 +10,8 @@ import Divider from './divider';
 import AuthorInfo from './authorInfo';
 
 const Logo = styled(({ src, to, className }) => (
-    <Link className={className} to={to}>
-        <img src={src} />
+    <Link className={classnames('logo', className)} to={to}>
+        <img src={src} alt='logo' />
     </Link>
 ))`
     line-height: 0;
@@ -122,10 +122,21 @@ const Header = styled(({ title, description, className }) => {
     margin-bottom: ${() => rhythm(1)};
 `;
 
-const Footer = styled(({ className }) => {
+const Footer = styled(({ copyrightRange, className }) => {
+    // Default to showing 2020-<current year> as the copyright range in the footer
+    // since that is the full range of the copyright dates of the blog.
+    if (!copyrightRange) {
+        const startYear = 2020;
+        const currentYear = new Date().getFullYear();
+        if (currentYear > startYear) {
+            copyrightRange = `${startYear}-${currentYear}`;
+        } else {
+            copyrightRange = `${currentYear}`;
+        }
+    }
     return (
         <footer className={classnames('footer', className)}>
-            © {new Date().getFullYear()}, Eric Turner
+            © {copyrightRange}, Eric Turner
         </footer>
     );
 })`
@@ -134,12 +145,12 @@ const Footer = styled(({ className }) => {
     text-align: center;
 `;
 
-const Layout = styled(({ title, description, className, children }) => {
+const Layout = styled(({ title, description, copyrightRange, className, children }) => {
     return (
         <div className={classnames('layout', className)}>
             <Header title={title} description={description} />
             <main>{children}</main>
-            <Footer />
+            <Footer copyrightRange={copyrightRange}/>
         </div>
     );
 })`
