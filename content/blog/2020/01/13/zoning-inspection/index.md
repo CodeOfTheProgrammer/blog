@@ -1,6 +1,6 @@
 ---
 title: 'County Zoning at my Door'
-date: '2020-01-01T00:00:00.000Z'
+date: '2020-01-13T00:00:00.000Z'
 description: 'Someone from the county Zoning Enforcement Division inspected my home office today.'
 ---
 
