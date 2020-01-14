@@ -1,6 +1,7 @@
 import React from 'react';
 import Disqus from 'disqus-react';
 import { Link, graphql } from 'gatsby';
+import {FaRegCalendarAlt} from 'react-icons/fa';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import Divider from '../components/divider';
@@ -83,7 +84,7 @@ const BlogPostTemplate = styled(
                     <header>
                         <PostTitle>{post.frontmatter.title}</PostTitle>
                         <PostDate>
-                            Published on {post.frontmatter.date}
+                            <FaRegCalendarAlt /> {post.frontmatter.date}
                         </PostDate>
                     </header>
                     <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -110,6 +111,9 @@ const BlogPostTemplate = styled(
     }
     blockquote p:after {
         content: close-quote;
+    }
+    .gatsby-highlight {
+        padding-left: ${() => rhythm(1)};
     }
 `;
 

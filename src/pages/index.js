@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import {FaRegCalendarAlt} from 'react-icons/fa';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import Layout from '../components/layout';
@@ -20,7 +21,7 @@ const BlogPostSummary = styled(
                     <h3>
                         <BlogLink to={fields.slug}>{title}</BlogLink>
                     </h3>
-                    <small>{frontmatter.date}</small>
+                    <small><FaRegCalendarAlt/> {frontmatter.date}</small>
                 </header>
                 <section>
                     <p
