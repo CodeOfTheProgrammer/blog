@@ -50,7 +50,7 @@ jobs:
           AWS_REGION: 'us-east-1'
           SOURCE_DIR: 'public'
       - name: invalidate
-        uses: chetan/invalidate-cloudfront-action@v1.0
+        uses: chetan/invalidate-cloudfront-action@v1.2
         env:
           DISTRIBUTION: ${{ secrets.COTP_AWS_CLOUDFRONT_DISTRIBUTION }}
           PATHS: '/*'
