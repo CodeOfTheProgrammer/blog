@@ -97,6 +97,8 @@ CHECK (
       VALUE ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$'
 );
 
+\c postgres://myapp_admin:Us3Y0uR0wNpA$$w0rd@localhost:5432/myapp_db;
+
 CREATE SCHEMA myapp AUTHORIZATION myapp_admin;
 GRANT USAGE ON SCHEMA myapp TO myapp_user;
 
