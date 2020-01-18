@@ -25,7 +25,7 @@ There are a lot of other features that I haven't implemented yet that are needed
 
 ## React Component for the Registration Form
 
-Implement a React component (e.g. `components/RegistrationForm.js`) that renders the registration form on a a page. Some things to note about my implementation:
+Implement a React component (e.g. `components/RegistrationForm.js`) that renders the registration form on a page. Some things to note about my implementation:
 
 * Email and password are state variables managed with the `useState` React hook
 * Submitting the form calls a `handleSubmit` function that uses `fetch` to POST a JSON
@@ -142,7 +142,7 @@ export default async (req, res) => {
 
 ## Password Hashing
 
-Never store passwords in plain text in your database. Also never store a weak hash of them (e.g. MD5 is weak). For my application I have decided to use `bcrypt` to cryptographically hash the passwords. If you want more information read [How to Safely Store a Password](https://codahale.com/how-to-safely-store-a-password/);
+Never store passwords in plain text in your database. Also never store a weak hash of them (e.g. MD5 is weak). For my application I have decided to use `bcrypt` to cryptographically hash the passwords. If you want more information read [How to Safely Store a Password](https://codahale.com/how-to-safely-store-a-password/).
 
 ## Conclusion
 
