@@ -21,6 +21,8 @@ I'm leaving out most of the validation and error handling in this article just t
 
 Also make sure that your web app is protected by TLS so passwords aren't being sent from the browser to your server in plain text.
 
+There are a lot of other features that I haven't implemented yet that are needed for a reasonable user experience (e.g. email confirmation). I'll probably blog about those things when I get around to implementing them.
+
 ## React Component for the Registration Form
 
 Implement a React component (e.g. `components/RegistrationForm.js`) that renders the registration form on a a page. Some things to note about my implementation:
