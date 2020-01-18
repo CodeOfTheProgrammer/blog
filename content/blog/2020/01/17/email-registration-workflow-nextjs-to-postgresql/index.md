@@ -31,13 +31,13 @@ Implement a React component (e.g. `components/RegistrationForm.js`) that renders
 * Submitting the form calls a `handleSubmit` function that uses `fetch` to POST a JSON
 body to the `/api/users` API route to create a new user 
 
-Here is my implementation of `components/RegisterForm.js`:
+Here is my implementation of `components/RegistrationForm.js`:
 
 ```
 import React, {useState} from 'react';
 import fetch from 'isomorphic-unfetch';
 
-const RegisterForm = () => {
+const RegistrationForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -65,7 +65,7 @@ const RegisterForm = () => {
     };
 
     return (
-        <div className='register-form'>
+        <div className='registration-form'>
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='email'>Email</label>
@@ -92,10 +92,10 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+export default RegistrationForm;
 ```
 
-To use this component I first import it into `pages/index.js`, then use it in the JSX as `<RegisterForm />`.
+To use this component I first import it into `pages/index.js`, then use it in the JSX as `<RegistrationForm />`.
 
 ## API Route to Accept Form Submission and Save to the Database
 
