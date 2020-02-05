@@ -79,14 +79,14 @@ I put the steps to create the database in a `create-database.sql` file that look
 ```
 \c postgres postgres
 
-CREATE USER myapp_admin WITH ENCRYPTED PASSWORD 'Us3Y0uR0wNpA$$w0rd';
-CREATE USER myapp_user WITH ENCRYPTED PASSWORD 'Us3Y0uR0wNpA$$w0rd';
-
+CREATE ROLE myapp_admin WITH ENCRYPTED PASSWORD '********' LOGIN;
+CREATE ROLE myapp_user WITH ENCRYPTED PASSWORD '********';
+GRANT myapp_admin TO postgres;
 CREATE DATABASE myapp_db WITH OWNER myapp_admin;
 
 \c myapp_db postgres
 
-/* Create a domain that validates email according to the HTML5 spec. Got this from Stackoverflow. */
+/* Create a domain that validates email according to the HTML5 spec. */
 
 CREATE EXTENSION citext;
 
@@ -95,15 +95,15 @@ CHECK (
       VALUE ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$'
 );
 
-\c postgres://myapp_admin:Us3Y0uR0wNpA$$w0rd@localhost:5432/myapp_db;
+\c postgres://myapp_admin:********@localhost:5432/myapp_db;
 
 CREATE SCHEMA myapp AUTHORIZATION myapp_admin;
 GRANT USAGE ON SCHEMA myapp TO myapp_user;
 
 /*
-   When myapp_admin creates tables, sequences, or functions in the myapp schema, the default
-   privileges on those objects for myapp_user should be restricted to the minimum they need to
-   support the application's functionality.
+   When myapp_admin creates tables, sequences, or functions in the myapp schema, the default privileges on
+   those objects for myapp_user should be restricted to the minimum they need to support the application's
+   functionality.
 */
 ALTER DEFAULT PRIVILEGES FOR ROLE myapp_admin IN SCHEMA myapp
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO myapp_user;
@@ -121,10 +121,11 @@ CREATE TABLE myapp.users (
        id BIGSERIAL PRIMARY KEY,
        date_created TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT (NOW() AT TIME ZONE 'utc'),
        email email_address UNIQUE NOT NULL,
-       password TEXT NOT NULL
+       full_name TEXT,
+       password TEXT
 );
 
-/* Create indexes for faster querying */
+/* Create the indexes for faster querying */
 
 CREATE INDEX idx_users_email
 ON myapp.users(email);
