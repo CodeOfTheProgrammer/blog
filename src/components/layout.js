@@ -70,8 +70,6 @@ const Title = styled.h1`
     align-items: center;
     margin-top: 0;
     margin-bottom: ${() => rhythm(1 / 4)};
-    font-size: ${() => scale(1 / 5).fontSize};
-    line-height: ${() => scale(1 / 5).lineHeight};
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -80,29 +78,12 @@ const Title = styled.h1`
     :hover {
         color: #007acc;
     }
-
-    @media ${breakpointUp.sm} {
-        font-size: ${() => scale(4 / 5).fontSize};
-        line-height: ${() => scale(4/ 5).lineHeight};
-    }
-
-    @media ${breakpointUp.md} {
-        font-size: ${() => scale(1.3).fontSize};
-        line-height: ${() => scale(1.3).lineHeight};
-    }
 `;
 
 const Description = styled.p`
     color: rgba(0, 0, 0, 0.5);
-    font-size: 0.8rem;
-    line-height: 0.8rem;
     text-align: center;
     margin-top: ${() => rhythm(3 / 4)};
-
-    @media ${breakpointUp.sm} {
-        font-size: ${() => scale(1 / 10).fontSize};
-        line-height: ${() => scale(1 / 10).lineHeight};
-    }
 `;
 
 const Header = styled(({ title, description, className }) => {

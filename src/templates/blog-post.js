@@ -7,19 +7,15 @@ import styled from 'styled-components';
 import Divider from '../components/divider';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { rhythm, scale } from '../utils/typography';
+import { rhythm } from '../utils/typography';
 
-const PostTitle = styled.h1`
+const PostTitle = styled.h3`
     margin-top: ${() => rhythm(1)};
     margin-bottom: ${() => rhythm(1 / 4)};
-    font-size: ${() => scale(0.8).fontSize};
     color: #007acc;
-    line-height: ${() => scale(0.8).lineHeight};
 `;
 
 const PostDate = styled.p`
-    font-size: ${() => scale(-1 / 5).fontSize};
-    line-height: ${() => scale(-1 / 5).lineHeight};
     display: block;
 `;
 
